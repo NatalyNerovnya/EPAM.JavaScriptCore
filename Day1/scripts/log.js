@@ -1,22 +1,37 @@
 for (var i = data.length - 1; i >= 0; i--) {
-//create new variable to store the value to log in console
+
 	var value;
 
-//if element of array is undefinded - variable in console is "не определено"
 	if(data[i] === undefined){
 		value = "не определено";
 		}
-//if element of array is null - variable in console is "не указано"
+
 		else if(data[i] === null){
 			value = "не указано";
 		}
-//in other ways value in console will be value of the element of the array
+
 		else{
 			value = data[i];
 		}
-//write string with value in console
+
 	console.log("data[ " + i + " ] = " + value);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Файл “log.js” должен выводить в консоль браузера измененные данные массива по 
 // следующим правилам:
