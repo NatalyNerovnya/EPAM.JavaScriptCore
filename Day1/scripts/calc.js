@@ -1,4 +1,4 @@
-for (var i = 0; i > data.length; i++) {
+for (var i = 0; i < data.length; i++){
 	// if element of array isn't undefinded or isn't equal to null(undefinded or null elements have no changes)
 	if(data[i] != undefined){
 		//take the value of element

@@ -1,4 +1,4 @@
-for (var i = data.length - 1; i >= 0; i--) {
+for (var i = data.length - 1; i >= 0; i--){
 //create new variable to store the value to log in console
 	var value;
 
