@@ -4,13 +4,13 @@ var type3 = 0;
 for (var i = 0; i < objects.length; i++) {
 	//check weather such method exsist in the object
 	if (objects[i].getCount1) {
-		type1 += objects[i].count;
+		type1 += objects[i].getCount1();
 	}
 	else if (objects[i].getCount2) {
-		type2 += objects[i].count;
+		type2 += objects[i].getCount2();
 	}
 	else {
-		type3 += objects[i].count;
+		type3 += objects[i].getCount3();
 	}
 }
 
