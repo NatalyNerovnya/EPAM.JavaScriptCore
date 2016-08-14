@@ -28,6 +28,11 @@
 	font-size: 25px;
 }
 
+.button.reset {
+	cursor: default;
+	border-color: red;
+}
+
 .box{
 	width: 10%;
 	position: relative;
