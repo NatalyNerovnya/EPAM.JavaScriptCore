@@ -8,59 +8,55 @@ $(function () {
         return Math.floor((Math.random() * max) + min);
     }
 
-    //make button with class="classSelector" achievable (grey border, pointer cursore, action on click)
-    function setAsWorked(classSelector) {
-        $(".button." + classSelector).css("cursor", "pointer");
-        $(".button." + classSelector).css("border-color", "#d9d9d9");
-    }
-
     //make button with class="classSelector" unachievable (red border, default cursore, no action on click)
     function setAsUnworked(classSelector) {
-        $(".button." + classSelector).css("cursor", "default");
-        $(".button." + classSelector).css("border-color", "red");
+        $(".button." + classSelector).addClass("unworkedClass")
     }
 
     function generate() {
     	//check whether the field is empty
-        if ($(".button.generate").css("cursor") != "default") {
+        if (!$(".button.generate").hasClass("unworkedClass")) {
             var $field = $(".field");
             for (var i = 0; i < 50; i++) {
-                $field.append('<div class="box" id="' + i + '">' + random(1, 100) + '</div>');
+                $field.append('<div class="box">' + random(1, 100) + '</div>');
             }
             //enable clicking on reset button 
-            setAsWorked("reset");
-            //unenable clicking on generate button 
-            setAsUnworked("generate");
+            $(".reset").removeClass("unworkedClass");
+            //unenable clicking on generate button
+            $(".generate").addClass("unworkedClass");
         }
     }
 
     function setColor() {
         //check whether the boxes are generated and not colored
-        if ($(".button.generate").css("cursor") == "default" && $(".button.set-color").css("cursor") != "default") {
-            for (var i = 0; i < 50; i++) {
-                var $box = $(".box#" + i);
-                if (+$box.text() > 75) {
-                    $box.css("background", "#f44336");
+         if ($(".button.generate").hasClass("unworkedClass") && !$(".button.set-color").hasClass("unworkedClass")) {
+             $.each($(".box"), function (){
+                
+                var $this = $(this);
+                if (+$this.text() > 75) {
+                    $this.addClass("red");
                 }
-                else if (+$box.text() > 50 && +$box.text() <= 75) {
-                    $box.css("background", "#ff9800");
+                else if (+$this.text() > 50 && +$this.text() <= 75) {
+                    $this.addClass("orange");
                 }
-                else if (+$box.text() > 25 && +$box.text() <= 50) {
-                    $box.css("background", "#4caf50");
+                else if (+$this.text() > 25 && +$this.text() <= 50) {
+                    $this.addClass("green");
                 }
-            }
-            //unenable clicking on set-color button 
-            setAsUnworked("set-color");
-        }
+
+                //unenable clicking on set-color button 
+            $(".set-color").addClass("unworkedClass");
+             });
+            
+         }
     }
 
     function reset() {
     	//check whether the field is full of boxes
-        if ($(".button.generate").css("cursor") == "default") {
+        if ($(".button.generate").hasClass("unworkedClass")) {
             $(".box").remove();
-            setAsWorked("generate");
-            setAsWorked("set-color");
-            setAsUnworked("reset");
+            $(".generate").removeClass("unworkedClass");
+            $(".set-color").removeClass("unworkedClass");
+            $(".reset").addClass("unworkedClass");
         }
     }
 });

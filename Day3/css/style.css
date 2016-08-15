@@ -28,10 +28,6 @@
 	font-size: 25px;
 }
 
-.button.reset {
-	cursor: default;
-	border-color: red;
-}
 
 .box{
 	width: 10%;
@@ -43,3 +39,21 @@
 	border: #d9d9d9 1px solid;
 	margin: -1px;
 }
+
+.unworkedClass {
+	cursor: default;
+	border-color: red;
+}
+
+.red {
+	background-color: #f44336;
+}
+
+.orange {
+	background-color: #ff9800;
+}
+
+.green {
+	background-color: #4caf50;
+}
+
