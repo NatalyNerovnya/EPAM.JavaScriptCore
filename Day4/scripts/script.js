@@ -6,5 +6,8 @@ $(function() {
     }
 
 	function generate() {
-	}
+		var $fields = $(".field-line");
+		var fieldIndex = random(0, $fields.length);
+		$($fields[fieldIndex]).append("<div class='zombie michael'></div>");
+	};
 });
