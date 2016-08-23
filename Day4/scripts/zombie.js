@@ -1,21 +1,13 @@
-$(function (){
-	function zombie() {
+function Zombie() {
+	this.health = 50;
+	this.speed = 1;
+	this.element = $("<div class='zombie'></div>");
+	
+}
 
-		this.move = function() {
-			var right = $(".zombie").css("right");
-			var newRight = +right.split("px")[0] + 1;
-			var x = newRight + 'px';
-			$(".zombie").css("right", newRight + 'px');
-			
-			if (right == "856px") {
-				clearInterval(interval);
-			};
-		};
-		this.die = function() {
-			$(body).append("<div class='game-over'>Game over!</div>");
-		};
-
-		this.health;
-		}
-	};
-);
+Zombie.prototype.move = function() {
+	var self = this;
+	var right = self.element.css("right");
+	var newRight = parseInt(right) + 1;
+	self.element.css("right", newRight + 'px');
+};
