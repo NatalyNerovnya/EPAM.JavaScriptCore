@@ -6,6 +6,20 @@ $(function() {
 	var currentZombieIndex = 0;
 
 
+	
+	var EXPLODE_RATE = 15;
+	var walkSpeed = 100;
+
+	var gameover = false;
+	var zombies;
+	var plants = [];
+	var numberOfplants = 0;
+	var occupiedLines = [];
+
+
+
+
+
 	function random(min, max) {
 	    return Math.floor((Math.random() * max) + min);
 	}
@@ -13,17 +27,24 @@ $(function() {
 	function generate() {
 		var fieldIndex = random(0, $fields.length);
 		var zombieVarient = random(1, 2);
-		// if (zombieVarient == 1) {
-			zombies[currentZombieIndex] = new Michael();
-			currentZombieIndex = currentZombieIndex + 1;
-			$($fields[fieldIndex]).append(zombies[currentZombieIndex - 1].element);
-		//}
-
-		var interval = setInterval(function() {
-			zombies[currentZombieIndex - 1].move();
-		}, 100);
+		 if(zombieVarient == 1)
+		 {
+		 	var zombie = new Michael();
+		 }
+		 else
+		 {
+		 	var zombie = new Strong();
+		 }
+			
+		
+		zombies[currentZombieIndex] = zombie;
+		currentZombieIndex = currentZombieIndex + 1;
+		$($fields[fieldIndex]).append(zombie.element);
+	    zombie.move(walkSpeed);
+		
 
 	};
 
 
 });
+
