@@ -1,13 +1,11 @@
 $(function() {
-	$("#btnGenerate").on("click", generate);		
+	$("#btnGenerate").on("click", generate);	
+	$("#btnSlowDown").on("click", slowDown);	
 
 	var $fields = $(".field-line");
 	var zombies = [];
 	var currentZombieIndex = 0;
 
-
-	
-	var EXPLODE_RATE = 15;
 	var walkSpeed = 100;
 
 	var gameover = false;
@@ -35,16 +33,27 @@ $(function() {
 		 {
 		 	var zombie = new Strong();
 		 }
-			
-		
+
 		zombies[currentZombieIndex] = zombie;
 		currentZombieIndex = currentZombieIndex + 1;
 		$($fields[fieldIndex]).append(zombie.element);
 	    zombie.move(walkSpeed);
-		
-
 	};
 
+	function slowDown(){
+		$(".shadow").addClass("frozenShadow");
 
+		$.each(zombies, function(index, element){
+			element.slowDown();
+			});
+
+		setTimeout(function() {
+			$.each(zombies, function(index, element){
+			element.accelerate();
+			});
+
+			$(".shadow").removeClass("frozenShadow");			
+		}, 10000);
+	};
 });
 

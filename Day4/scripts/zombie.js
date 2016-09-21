@@ -1,6 +1,7 @@
 function Zombie() {
 	this.name;
 	this.speed;
+	this.baseSpeed;
 	this.minSpeed = 1;
 	this.position = 0;
 	this.health = 50;
@@ -8,16 +9,6 @@ function Zombie() {
 	this.isAlive = true;
 
 	this.element = $("<div class='zombie'></div>");
-	
-	// this.healthWrapper = $("<div class='health-bar-wrapper'></div>");
-	// this.healthBarText =  $("<p>" + this.currentHealth + '/' + this.health + "</p>");
-	// this.currentHealthBar = $("<div class='health-bar-current'></div>");
-
-	// this.healthWrapper.append("<div class='health-bar'></div>");
-	// this.healthWrapper.append(this.currentHealthBar);
-	// this.healthWrapper.append(this.healthBarText);
-
-	// this.element.append(this.healthWrapper);
 }
 
 Zombie.prototype.move = function(currentSpeed) {
@@ -33,6 +24,7 @@ Zombie.prototype.move = function(currentSpeed) {
 
 			$(".game-over").text('Game Over!');
 			$(".game-over").show();
+			$(".shadow").addClass("deadShadow");
 			self.die();
 		}
 
@@ -40,19 +32,19 @@ Zombie.prototype.move = function(currentSpeed) {
 	}, currentSpeed);	
 };
 
-
-
-
-
-
 Zombie.prototype.die = function() {
 	$(this.element, '#field').remove();
 	this.isAlive = false;
 };
 
-Zombie.prototype.slowUp = function() {
+Zombie.prototype.slowDown = function() {
 	this.speed = this.minSpeed;
 };
+
+Zombie.prototype.accelerate = function() {
+	this.speed = this.baseSpeed;
+};
+
 
 Zombie.prototype.growOld = function(power, time) {
 	var self = this;
