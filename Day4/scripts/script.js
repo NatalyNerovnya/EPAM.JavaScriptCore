@@ -1,19 +1,13 @@
 $(function() {
 	$("#btnGenerate").on("click", generate);	
 	$("#btnSlowDown").on("click", slowDown);	
+	$("#btnPoison").on("click", poison);
 
 	var $fields = $(".field-line");
 	var zombies = [];
 	var currentZombieIndex = 0;
-
+	var interval;
 	var walkSpeed = 100;
-
-	var gameover = false;
-	var zombies;
-	var plants = [];
-	var numberOfplants = 0;
-	var occupiedLines = [];
-
 
 
 
@@ -37,7 +31,19 @@ $(function() {
 		zombies[currentZombieIndex] = zombie;
 		currentZombieIndex = currentZombieIndex + 1;
 		$($fields[fieldIndex]).append(zombie.element);
-	    zombie.move(walkSpeed);
+	    walk(zombie);
+	};
+
+	function walk(zombie){
+		interval = setInterval(function() {
+		if (!zombie.isAlive) {
+			clearInterval(interval);
+		} else if (zombie.position  == 870 ) {
+			gameOver();
+		}
+		
+		zombie.move();
+		 }, walkSpeed);
 	};
 
 	function slowDown(){
@@ -46,14 +52,32 @@ $(function() {
 		$.each(zombies, function(index, element){
 			element.slowDown();
 			});
-
-		setTimeout(function() {
+		clearInterval(interval);
+		interval = setTimeout(function() {
 			$.each(zombies, function(index, element){
 			element.accelerate();
+			walk(element);
 			});
 
 			$(".shadow").removeClass("frozenShadow");			
 		}, 10000);
 	};
-});
 
+	function gameOver() {
+		clearInterval(interval);
+		$.each(zombies, function(index, element) {
+			element.die();
+		});
+		$(".game-over").text('Game Over!');
+		$(".game-over").show();
+		$(".shadow").addClass("deadShadow");
+	};
+
+	function poison (){
+		$(".shadow").addClass("poisonShadow");
+		$.each(zombies, function(index, value){
+			value.growOld();
+		});
+		$(".shadow").removeClass("poisonShadow");
+	};
+});
