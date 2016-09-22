@@ -67,4 +67,4 @@ Zombie.prototype.explode = function(power) {
 	if (this.currentHealth <= 0 || !this.isAlive) {
 		this.die();
 	}
-};
+}
