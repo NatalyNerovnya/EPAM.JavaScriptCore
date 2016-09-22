@@ -11,25 +11,10 @@ function Zombie() {
 	this.element = $("<div class='zombie'></div>");
 }
 
-Zombie.prototype.move = function(currentSpeed) {
+Zombie.prototype.move = function() {
 	var self = this;
-	
-	var refreshIntervalId = setInterval(function() {
-		self.position += self.speed;
-
-		if (!self.isAlive) {
-			clearInterval(refreshIntervalId);
-		} else if (self.position  == 870 ) {
-			clearInterval(refreshIntervalId);
-
-			$(".game-over").text('Game Over!');
-			$(".game-over").show();
-			$(".shadow").addClass("deadShadow");
-			self.die();
-		}
-
-		self.element.css('right', self.position);
-	}, currentSpeed);	
+	self.position += self.speed;
+	self.element.css('right', self.position);
 };
 
 Zombie.prototype.die = function() {

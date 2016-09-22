@@ -54,12 +54,14 @@ body {
 	top: 0; 
 	right: 0; 
 }
+
 .zombie.michael { 
 	width: 46px; 
 	height: 69px; 
 	background-image: url(../img/michael.gif); 
 	background-size: cover; 
 }
+
 .zombie.strong { 
 	width: 60px; 
 	height: 73px; 
@@ -67,25 +69,22 @@ body {
 	background-size: cover; 
 }
 
+.shadow {
+	opacity: 0.3;
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+	top: 0;
+	left: 0;
+}
 
 .frozenShadow {
   background-color: #1C1CFF; 
-  height: 100%;
-  opacity: 0.3;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-  top: 0;
-  left: 0;
+  height: 90%;
 }
 
 .deadShadow {
   background-color: red; 
   height: 100%;
-  opacity: 0.3;
   position: fixed;
-  width: 100%;
-  z-index: 100;
-  top: 0;
-  left: 0;
 }
