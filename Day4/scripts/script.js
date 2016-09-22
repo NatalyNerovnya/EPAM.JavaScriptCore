@@ -1,6 +1,7 @@
 $(function() {
 	$("#btnGenerate").on("click", generate);	
-	$("#btnSlowDown").on("click", slowDown);	
+	$("#btnSlowDown").on("click", slowDown);
+	$("#btnSlowDown").on("click", poison);	
 
 	var $fields = $(".field-line");
 	var zombies = [];
@@ -54,6 +55,11 @@ $(function() {
 
 			$(".shadow").removeClass("frozenShadow");			
 		}, 10000);
+	};
+
+	function poison (){
+		$(".shadow").addClass("poisonShadow");
+		$(".shadow").removeClass("poisonShadow");
 	};
 });
 
