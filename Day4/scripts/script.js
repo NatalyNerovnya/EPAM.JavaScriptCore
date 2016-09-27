@@ -2,6 +2,7 @@ $(function() {
 	$("#btnGenerate").on("click", generate);	
 	$("#btnSlowDown").on("click", slowDown);	
 	$("#btnPoison").on("click", poison);
+	$("#btnExplode").on("click", explode);
 
 	var $fields = $(".field-line");
 	var zombies = [];
@@ -76,8 +77,17 @@ $(function() {
 	function poison (){
 		$(".shadow").addClass("poisonShadow");
 		$.each(zombies, function(index, value){
-			value.growOld();
+			value.growOld(10000);
 		});
-		$(".shadow").removeClass("poisonShadow");
+		setTimeout(function() {
+			$(".shadow").removeClass("poisonShadow");
+		}, 10000);
+		
+	};
+
+	function explode() {
+		$.each(zombies, function(index, element){
+			element.explode(20);
+			});
 	};
 });

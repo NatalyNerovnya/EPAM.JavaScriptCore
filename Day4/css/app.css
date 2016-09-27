@@ -53,6 +53,10 @@ body {
 	background-color: green; 
 }
 
+.button#btnExplode {
+	background-color: red;
+}
+
 .zombie { 
 	position: absolute; 
 	top: 0; 

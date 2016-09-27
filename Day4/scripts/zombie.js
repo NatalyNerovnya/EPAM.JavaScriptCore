@@ -43,17 +43,24 @@ Zombie.prototype.accelerate = function() {
 };
 
 
-Zombie.prototype.growOld = function() {
+Zombie.prototype.growOld = function(time) {
 	var self = this;
 	var currentTime = 0;
 
 	var refreshIntervalId = setInterval(function() {
 		self.explode(1);
 		currentTime++;
+		if (this.currentHealth <= 0 || !this.isAlive) {
+		this.die();
+	}
 		if (!self.isAlive) {
 			clearInterval(refreshIntervalId);
 		}
 	}, 1000);
+
+	setTimeout(function() {
+		clearInterval(refreshIntervalId);
+	}, time);
 };
 
 Zombie.prototype.explode = function(power) {
