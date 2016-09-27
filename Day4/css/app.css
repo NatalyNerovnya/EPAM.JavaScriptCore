@@ -96,3 +96,35 @@ body {
 .poisonShadow {
   background-color: green;
 }
+
+
+
+.health-bar-wrapper {
+	width: 100%;
+	text-align: center;
+}
+
+.health-bar-wrapper div {
+	height: 5px;
+}
+
+.health-bar {
+	background-color: #B21400;
+}
+
+.health-bar-current {
+	background-color: #FF1B16;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.health-bar-wrapper p {
+	color: white;
+	font: 5px bold;
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	margin: 0 0 0 40%;
+}

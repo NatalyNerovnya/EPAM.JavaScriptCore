@@ -9,6 +9,17 @@ function Zombie() {
 	this.isAlive = true;
 
 	this.element = $("<div class='zombie'></div>");
+	
+	this.healthWrapper = $("<div class='health-bar-wrapper'></div>");
+	this.healthBarText =  $("<p>" + this.currentHealth + '/' + this.health + "</p>");
+	this.currentHealthBar = $("<div class='health-bar-current'></div>");
+
+	this.healthWrapper.append("<div class='health-bar'></div>");
+	this.healthWrapper.append(this.currentHealthBar);
+	this.healthWrapper.append(this.healthBarText);
+
+	this.element.append(this.healthWrapper);
+
 }
 
 Zombie.prototype.move = function() {
