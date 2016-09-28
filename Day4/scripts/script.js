@@ -39,6 +39,11 @@ $(function() {
 		interval = setInterval(function() {
 		if (!zombie.isAlive) {
 			clearInterval(interval);
+			// if(getZombieIndex(zombie != -1))
+			// {
+			// 	zombies.splice(getZombieIndex(zombie), 1);				
+			// }
+
 		} else if (zombie.position  == 870 ) {
 			gameOver();
 		}
@@ -89,5 +94,16 @@ $(function() {
 		$.each(zombies, function(index, element){
 			element.explode(20);
 			});
+	};
+
+	function getZombieIndex(zombie) {
+		for (var i = 0; i < zombies.length; i++) {
+			if(zombies[i].position == zombie.position && 
+				zombies[i].name == zombie.name && 
+				zombies[i].currentHealth == zombie.currentHealth &&
+				$(zombies[i].element, '#field') == $(zombie.element, '#field'))
+				return i;
+		}
+		return -1;
 	};
 });

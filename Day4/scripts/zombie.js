@@ -50,8 +50,8 @@ Zombie.prototype.growOld = function(time) {
 	var refreshIntervalId = setInterval(function() {
 		self.explode(1);
 		currentTime++;
-		if (this.currentHealth <= 0 || !this.isAlive) {
-		this.die();
+		if (self.currentHealth <= 0 || !self.isAlive) {
+		self.die();
 	}
 		if (!self.isAlive) {
 			clearInterval(refreshIntervalId);
